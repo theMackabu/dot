@@ -19,9 +19,9 @@ Personal configuration files and settings for various development tools and appl
 
 ## Shell Configuration
 
-- `.zshrc`: Main Zsh configuration
-- `.zprofile`: Zsh profile settings
-- `.tishrc`: [Tish](https://github.com/theMackabu/tish) shell configuration
+- [`.zshrc`](.zshrc/): Main Zsh configuration
+- [`.zprofile`](.zprofile/): Zsh profile settings
+- [`.tishrc`](.tishrc/): [Tish](https://github.com/theMackabu/tish) shell configuration
 
 ## Installation
 

@@ -1,0 +1,81 @@
+#!/bin/bash
+
+RED='\033[0;31m'
+BRIGHT_RED='\033[1;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+WHITE='\033[1;37m'
+NC='\033[0m'
+
+clear
+tput civis
+
+show_boot_message() {
+    local status="$1"
+    local color="$2"
+    local message="$3"
+    local time_info="$4"
+    
+    printf "[%b%s%b] %s" "$color" "$status" "$NC" "$message"
+    if [ -n "$time_info" ]; then
+        printf " %s" "$time_info"
+    fi
+    printf "\n"
+}
+
+update_time_display() {
+    local minutes=$1
+    local seconds=$2
+    local dot_pattern=$3
+    
+    tput cuu1
+    tput el
+    
+    printf "[%b%s%b] A start job is running for Wait for Network to be Configured (%dm %ds / no limit)\n" \
+           "$RED" "$dot_pattern" "$NC" "$minutes" "$seconds"
+}
+
+create_dot_pattern() {
+    local pos=$1
+    
+    case $pos in
+        0) printf "%b*%b*%b*  " "$RED" "$BRIGHT_RED" "$RED" ;;
+        1) printf "%b *%b*%b* " "$RED" "$BRIGHT_RED" "$RED" ;;
+        2) printf "%b  *%b*%b*" "$RED" "$BRIGHT_RED" "$RED" ;;
+        3) printf "%b *%b*%b* " "$RED" "$BRIGHT_RED" "$RED" ;;
+        4) printf "%b*%b*%b*  " "$RED" "$BRIGHT_RED" "$RED" ;;
+    esac
+}
+
+start_time=0
+counter=$start_time
+dot_position=0
+direction=1
+frame_count=0
+
+while true; do
+    sleep 0.5
+    
+    if [ $((frame_count % 2)) -eq 0 ]; then
+        counter=$((counter + 1))
+    fi
+    
+    minutes=$((counter / 60))
+    seconds=$((counter % 60))
+    
+    current_pattern=$(create_dot_pattern $dot_position)
+    update_time_display $minutes $seconds "$current_pattern"
+    
+    dot_position=$((dot_position + direction))
+    if [ $dot_position -eq 2 ]; then
+        direction=-1
+    elif [ $dot_position -eq 0 ]; then
+        direction=1
+    fi
+    
+    frame_count=$((frame_count + 1))
+done
+
+tput cnorm
+echo ""
+echo "Simulation interrupted. Press Ctrl+C to exit..."
