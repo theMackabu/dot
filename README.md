@@ -4,18 +4,18 @@ Personal configuration files and settings for various development tools and appl
 
 ## Contents
 
-- **nvim/**: neovim configuration
-- **ghostty/**: ghostty terminal emulator config and shaders
-- **tmux/**: tmux configuration and scripts
-- **fastfetch/**: system information tool configs
-- **mise/**: development environment manager config
-- **pmc/**: process manager configuration
-- **htop/**: system monitor configuration
-- **meow/**: micro¹ like text editor configuration
-- **themes/**: terminal and prompt themes (oh-my-posh)
-- **plugins/**: shell plugins and completions (zsh)
-- **bin/**: custom scripts and utilities
-- **assets/**: shared assets and configurations
+- [**nvim/**](nvim/): neovim configuration
+- [**ghostty/**](ghostty/): ghostty terminal emulator config and shaders
+- [**tmux/**](tmux/): tmux configuration and scripts
+- [**fastfetch/**](fastfetch/): system information tool configs
+- [**mise/**](mise/): development environment manager config
+- [**pmc/**](pmc/): process manager configuration
+- [**htop/**](htop/): system monitor configuration
+- [**meow/**](meow/): micro¹ like text editor configuration
+- [**themes/**](themes/): terminal and prompt themes (oh-my-posh)
+- [**plugins/**](plugins/): shell plugins and completions (zsh)
+- [**bin/**](bin/): custom scripts and utilities
+- [**assets/**](assets/): shared assets and configurations
 
 ## Shell Configuration
 
