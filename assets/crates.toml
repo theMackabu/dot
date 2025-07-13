@@ -1,0 +1,97 @@
+[v1]
+"battop 0.2.4 (registry+https://github.com/rust-lang/crates.io-index)" = ["battop"]
+"bend-lang 0.2.37 (registry+https://github.com/rust-lang/crates.io-index)" = ["bend"]
+"bottom 0.10.2 (registry+https://github.com/rust-lang/crates.io-index)" = ["btm"]
+"bunyan 0.1.9 (registry+https://github.com/rust-lang/crates.io-index)" = ["bunyan"]
+"cargo-bundle 0.6.1 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-bundle"]
+"cargo-cache 0.8.3 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-cache"]
+"cargo-chef 0.1.68 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-chef"]
+"cargo-clean-all 0.6.2 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-clean-all"]
+"cargo-clicker 0.1.3 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-clicker"]
+"cargo-clone 1.2.3 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-clone"]
+"cargo-edit 0.13.0 (registry+https://github.com/rust-lang/crates.io-index)" = [
+    "cargo-add",
+    "cargo-rm",
+    "cargo-set-version",
+    "cargo-upgrade",
+]
+"cargo-expand 1.0.100 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-expand"]
+"cargo-generate 0.23.3 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-generate"]
+"cargo-machete 0.7.0 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-machete"]
+"cargo-mommy 0.3.1 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-mommy"]
+"cargo-pgo 0.2.9 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-pgo"]
+"cargo-release 0.25.14 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-release"]
+"cargo-space 1.0.0 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-space"]
+"cargo-udeps 0.1.53 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-udeps"]
+"cargo-updater 0.21.0 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-updater"]
+"cargo-upgrades 2.1.2 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-upgrades"]
+"cargo-validate 0.2.0 (path+file:///Users/themackabu/Developer/rust/cargo-publish)" = ["cargo-validate"]
+"cargo-wizard 0.2.2 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-wizard"]
+"cargo-zigbuild 0.19.8 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-zigbuild"]
+"compiler 0.1.0 (git+https://github.com/borgo-lang/borgo.git#3b9f01578941fb00ed93756e2fadc009feb50128)" = ["compiler"]
+"coreutils 0.0.28 (registry+https://github.com/rust-lang/crates.io-index)" = ["coreutils"]
+"cotton 0.1.0 (git+https://github.com/danielhuang/cotton#4de9b5d6a0b22b93877ebc8996c12a6972a5b396)" = ["cotton"]
+"cpu-stress-test 2.1.0 (registry+https://github.com/rust-lang/crates.io-index)" = ["cpu-stress-test"]
+"cross 0.2.5 (git+https://github.com/cross-rs/cross#49338b18fdb82dedb2a813664e2e565ca73e2047)" = [
+    "cross",
+    "cross-util",
+]
+"depth 0.0.4 (registry+https://github.com/rust-lang/crates.io-index)" = ["depth"]
+"diesel_cli 2.2.6 (registry+https://github.com/rust-lang/crates.io-index)" = ["diesel"]
+"diesel_cli_ext 0.3.14 (registry+https://github.com/rust-lang/crates.io-index)" = ["diesel_ext"]
+"dufs 0.43.0 (registry+https://github.com/rust-lang/crates.io-index)" = ["dufs"]
+"eza 0.20.12 (registry+https://github.com/rust-lang/crates.io-index)" = ["eza"]
+"fd-find 10.2.0 (registry+https://github.com/rust-lang/crates.io-index)" = ["fd"]
+"ferris-fetch 1.2.4 (registry+https://github.com/rust-lang/crates.io-index)" = ["ferris-fetch"]
+"flamegraph 0.6.7 (registry+https://github.com/rust-lang/crates.io-index)" = [
+    "cargo-flamegraph",
+    "flamegraph",
+]
+"fleet-rs 0.0.8 (registry+https://github.com/rust-lang/crates.io-index)" = [
+    "cargo-fleet",
+    "fleet",
+]
+"ghostty_animation 0.1.0 (path+file:///Users/themackabu/Downloads/ghostty-animation-command)" = ["ghostty_animation"]
+"git-cliff 2.7.0 (registry+https://github.com/rust-lang/crates.io-index)" = [
+    "git-cliff",
+    "git-cliff-completions",
+    "git-cliff-mangen",
+]
+"gitoxide 0.39.0 (registry+https://github.com/rust-lang/crates.io-index)" = [
+    "ein",
+    "gix",
+]
+"gitu 0.27.0 (registry+https://github.com/rust-lang/crates.io-index)" = ["gitu"]
+"golduck 1.0.1 (registry+https://github.com/rust-lang/crates.io-index)" = ["golduck"]
+"hvm 2.0.22 (registry+https://github.com/rust-lang/crates.io-index)" = ["hvm"]
+"kade 0.0.1 (path+file:///Users/themackabu/Developer/rust/playground/db/crates/kade)" = [
+    "kade-cli",
+    "kade-server",
+]
+"loc 0.5.0 (git+https://github.com/cgag/loc.git#1e0c7f434ddfd51439e1d4eb126f31b7a04229d9)" = ["loc"]
+"loft 0.0.1-alpha.17 (path+file:///Users/themackabu/Developer/rust/loft)" = ["loft"]
+"mdcat 2.5.0 (git+https://github.com/swsnr/mdcat.git#01a75dbb6ffd9b830cf426ffe218ef7e4fb4dad6)" = ["mdcat"]
+"meow-editor 1.4.0 (path+file:///Users/themackabu/Developer/rust/playground/editor)" = ["meow"]
+"mhv 0.3.4 (registry+https://github.com/rust-lang/crates.io-index)" = ["mhv"]
+"miniserve 0.28.0 (registry+https://github.com/rust-lang/crates.io-index)" = ["miniserve"]
+"natls 2.1.14 (registry+https://github.com/rust-lang/crates.io-index)" = ["natls"]
+"ns 0.1.0 (path+file:///Users/themackabu/Developer/rust/node-system)" = ["ns"]
+"onefetch 2.22.0 (registry+https://github.com/rust-lang/crates.io-index)" = ["onefetch"]
+"pumas 0.2.4 (registry+https://github.com/rust-lang/crates.io-index)" = ["pumas"]
+"rgssad 0.2.0 (git+https://github.com/luxrck/rgssad.git#0b74de8d8588b5e1acd86edaede7d364b279c9be)" = ["rgssad"]
+"ripgrep 14.1.1 (registry+https://github.com/rust-lang/crates.io-index)" = ["rg"]
+"rnp 0.1.146 (registry+https://github.com/rust-lang/crates.io-index)" = [
+    "rnp",
+    "rnp_server",
+]
+"rust-ls 0.1.0 (path+file:///Users/themackabu/Developer/rust/ls)" = ["rust-ls"]
+"sccache 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)" = ["sccache"]
+"tauri-cli 2.1.0 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-tauri"]
+"thokr 0.4.1 (registry+https://github.com/rust-lang/crates.io-index)" = ["thokr"]
+"tish 0.5.2 (path+file:///Users/themackabu/Downloads/tish)" = ["tish"]
+"volt-cli 0.2.1 (path+file:///Users/themackabu/Developer/rust/volt/crates/volt)" = ["volt"]
+"warp-cors 0.3.0 (registry+https://github.com/rust-lang/crates.io-index)" = ["warp-cors"]
+"worker-build 0.1.3 (registry+https://github.com/rust-lang/crates.io-index)" = [
+    "worker-build",
+    "worker-codegen",
+]

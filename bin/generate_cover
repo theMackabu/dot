@@ -1,0 +1,159 @@
+#!/bin/bash
+
+# usage: ./generate_cover.sh "url" [--title "Custom Title"] [--artist "Custom Artist"] [--date "YYYY"]
+
+# parse command line arguments
+CUSTOM_TITLE=""
+CUSTOM_ARTIST=""
+CUSTOM_DATE=""
+URL=""
+
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --title)
+            CUSTOM_TITLE="$2"
+            shift 2
+            ;;
+        --artist)
+            CUSTOM_ARTIST="$2"
+            shift 2
+            ;;
+        --date)
+            CUSTOM_DATE="$2"
+            shift 2
+            ;;
+        *)
+            if [ -z "$URL" ]; then
+                URL="$1"
+            fi
+            shift
+            ;;
+    esac
+done
+
+if [ -z "$URL" ]; then
+    echo "Error: URL is required"
+    echo "Usage: ./generate_video.sh \"url\" [--title \"Custom Title\"] [--artist \"Custom Artist\"] [--date \"YYYY\"]"
+    exit 1
+fi
+
+# function to convert to snake_case
+to_snake_case() {
+    echo "$1" | tr '[:upper:]' '[:lower:]' | \
+    sed -e 's/[^a-zA-Z0-9]/_/g' -e 's/__*/_/g' -e 's/^_//' -e 's/_$//'
+}
+
+# function to sanitize text for ImageMagick
+sanitize() {
+    echo "$1" | sed 's/"/\\"/g'
+}
+
+# function to truncate text
+truncate_text() {
+    local text="$1"
+    if [ ${#text} -gt 50 ]; then
+        echo "${text:0:47}..."
+    else
+        echo "$text"
+    fi
+}
+
+# function to process title
+process_title() {
+    local title="$1"
+    # remove everything before the hyphen if it exists, and trim whitespace
+    if [[ "$title" == *-* ]]; then
+        title=$(echo "$title" | sed 's/^.*- *//')
+    fi
+    # remove everything after the colon if it exists, and trim whitespace
+    if [[ "$title" == *:* ]]; then
+        title=$(echo "$title" | sed 's/:.*//')
+    fi
+    
+    # clean up common video title elements
+    title=$(echo "$title" | sed -E '
+        s/\[[^]]*\]//g;
+        s/\([^)]*\)//g;
+        s/(HD|4K|8K|HQ|Official|Music Video)//gi;
+        s/[0-9]+p//gi;
+        s/High Quality//gi;
+        s/Official Video//gi;
+        s/Lyrics?//gi;
+        s/[[:space:]]+/ /g;
+        s/^[[:space:]]+//;
+        s/[[:space:]]+$//')
+    
+    echo "$title"
+}
+
+process_artist() {
+    local artist="$1"
+    # remove "- Topic" if it exists
+    echo "$artist" | sed 's/ - Topic$//'
+}
+
+# get the title to check if file exists
+echo "Checking metadata..."
+TITLE=$(yt-dlp --get-title "$URL")
+TITLE=$(process_title "$TITLE")
+# Use custom title if provided
+if [ -n "$CUSTOM_TITLE" ]; then
+    TITLE="$CUSTOM_TITLE"
+fi
+TITLE_TRUNCATED=$(truncate_text "$TITLE")
+FILENAME=$(to_snake_case "$TITLE_TRUNCATED")
+
+# check if file exists
+if [ -f "${FILENAME}.mp4" ]; then
+    echo "Error: ${FILENAME}.mp4 already exists"
+    exit 1
+fi
+
+# download audio
+echo "Downloading audio..."
+yt-dlp -f bestaudio --extract-audio --audio-format mp3 --output "temp_audio.%(ext)s" --print-json "$URL" > metadata.json 2>/dev/null
+ARTIST=$(cat metadata.json | jq -r '.uploader')
+ARTIST=$(process_artist "$ARTIST")
+# Use custom artist if provided
+if [ -n "$CUSTOM_ARTIST" ]; then
+    ARTIST="$CUSTOM_ARTIST"
+fi
+
+YEAR=$(cat metadata.json | jq -r '.upload_date[0:4]')
+# Use custom date if provided
+if [ -n "$CUSTOM_DATE" ]; then
+    YEAR="$CUSTOM_DATE"
+fi
+
+DURATION=$(cat metadata.json | jq -r '.duration')
+rm metadata.json
+
+# format duration with leading space for single-digit minutes
+MINUTES=$((DURATION/60))
+if [ $MINUTES -lt 10 ]; then
+    DURATION_FORMATTED=$(printf "​   %d:%02d" $MINUTES $((DURATION%60)))
+else
+    DURATION_FORMATTED=$(printf "%d:%02d" $MINUTES $((DURATION%60)))
+fi
+
+# download thumbnail
+echo "Downloading thumbnail..."
+yt-dlp --write-thumbnail --skip-download --convert-thumbnails jpg "$URL" -o "temp_thumb" 2>/dev/null
+
+# create title card using the external script
+echo "Generating title card..."
+create_title_card temp_thumb.jpg "$(sanitize "$TITLE_TRUNCATED")" "$(sanitize "$ARTIST")" "$YEAR" "$DURATION_FORMATTED"
+
+# create MP4 with title card and audio
+echo "Creating final video..."
+ffmpeg -loop 1 -i output_title_card.png -i temp_audio.mp3 \
+    -c:v libx264 -preset ultrafast -tune stillimage \
+    -c:a aac -b:a 192k -pix_fmt yuv420p \
+    -shortest \
+    -movflags +faststart \
+    "${FILENAME}.mp4" 2>/dev/null
+
+# clean up temporary files
+rm temp_thumb.jpg output_title_card.png temp_audio.mp3
+
+echo "Done! Created ${FILENAME}.mp4"

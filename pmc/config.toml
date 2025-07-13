@@ -1,0 +1,22 @@
+default = "local"
+
+[runner]
+shell = "/bin/sh"
+args = ["-c"]
+node = "node"
+log_path = "/Users/themackabu/.pmc/logs"
+
+[daemon]
+restarts = 10
+interval = 1000
+kind = "default"
+
+[daemon.web]
+ui = false
+api = false
+address = "localhost"
+port = 5630
+
+[daemon.web.secure]
+enabled = false
+token = "testing123"

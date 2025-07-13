@@ -1,0 +1,44 @@
+config.use_tish_ls = true
+
+local pmc_ver <const> = sys.eval_to_str("pmc --version")
+env.pmc_version = pmc_ver:match("pmc (%d+%.%d+%.%d+)")
+
+-- prompt
+config.prompt = [[
+   {let docker_conn = cmd('docker context show')}
+   {let version = cmd('docker --version') | match('Docker version (\d+\.\d+\.\d+)', 1)}
+   
+   \n<s.b><s.#5EFDFF>{path-folder}</s>{' '}
+   
+   {if git.in-repo {
+      <s.b>in <s.{
+         if git.working.changed || git.staging.changed { #FFEB3B } 
+         else if git.ahead > 0 && git.behind > 0 { #FFCC80 }
+         else if git.ahead > 0 { #B388FF } 4
+         else if git.behind > 0 { #B388FB } else { #FF94DF }
+      }> {git.branch} {git.status}</s>
+   }}
+   
+   <s.b>on <s.#5EFDFF>󰡨 v{version} ({docker_conn})</s>
+   <s.b>\n<s.#57E15D>➜</s>{' '}
+]]
+
+-- functions
+
+function example_lua(arg1, arg2)
+   print("arg1: " .. arg1 .. "\narg2: " .. arg2)
+end
+
+function meower(count)
+  count = count or 1
+  for i = 1, count do
+    print("meow")
+  end
+end
+
+-- aliases
+
+alias.kat = "bat"
+alias.ls = "ls -l"
+alias.exe = "example_lua 1"
+alias.exe2 = "exe 1"

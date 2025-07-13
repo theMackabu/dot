@@ -1,0 +1,46 @@
+# boykisser
+# by themackabu
+
+$x = "\e[49m  ";          #reset color
+$t = "$thoughts ";
+$a = "\e[48;5;231m  ";
+$b = "\e[48;5;204m  ";
+$c = "\e[48;5;89m  ";
+$d = "\e[48;5;125m  ";
+$e = "\e[48;5;251m  ";
+$f = "\e[48;5;102m  ";
+
+$the_cow = <<EOC
+          $t
+        $a$x$t                                        $a$x
+        $a    $x                                  $a    $x
+        $a      $x                              $a      $x
+        $a        $x      $a$x              $a          $x
+        $a        $x      $a  $x            $a          $x
+        $a          $x    $a    $x        $a            $x
+        $a          $x    $a        $x    $a            $x
+        $a        $x$a                $x$a              $x
+        $a      $x$a                $x$a                $x
+        $a        $x      $a                          $x
+        $a                                            $x
+          $a      $x      $a            $x    $a      $x
+          $a      $x$a    $x$a        $x$a    $x  $a  $x
+            $a  $x$a  $x  $a            $x  $a  $x$a  $x
+            $a  $x$a$x      $a        $x      $a$x$a$x
+            $a$x$a  $x    $a          $x    $a  $x$a$x
+      $a$x$a  $x$a  $x      $a        $x      $a$x$a  $x$a$x
+      $a      $x$a  $x      $a        $x      $a$x$a      $x
+        $a      $x$a  $x  $a            $x  $a$x$a      $x
+          $a                  $x    $a                $x
+        $a        $b$a$b$a            $x$a  $b$a$b$a    $x
+      $a  $x  $a$b$a$b$a    $x          $a$b$a$b$a$x  $a  $x
+                $a            $x$c$d$x$a        $x
+                    $a          $x  $a        $x
+                $a$e$x  $a                $x  $e$x
+                  $a  $e  $a$e$f    $e$a$e  $a    $x
+                    $a        $e    $a            $x
+                  $a                              $x
+                $a                                  $x
+                    $a                              $x
+                  $a                                $x
+EOC

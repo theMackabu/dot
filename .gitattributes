@@ -1,0 +1,5 @@
+# set .tishrc files to be detected as Lua
+.tishrc linguist-language=Lua
+
+# set .zprofile files to be detected as Shell (Zsh)
+.zprofile linguist-language=Shell
