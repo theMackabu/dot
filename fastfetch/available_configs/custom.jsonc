@@ -1,0 +1,111 @@
+{
+	"$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+	"display": {
+		"size": {
+			"maxPrefix": "GB",
+			"ndigits": 1
+		}
+	},
+	"logo": {
+		"type": "kitty",
+		"height": 17,
+		"source": "/Users/themackabu/Desktop/awww.png",
+		"padding": {
+			"left": 2,
+			"right": 2,
+			"top": 1
+		}
+	},
+	"modules": [
+		{
+			"type": "title",
+			"format": "{user-name}@{host-name}",
+			"outputColor": "1;38;2;254;95;175"
+		},
+		{
+			"type": "separator",
+			"outputColor": "bright_black"
+		},
+		{
+			"type": "os",
+			"keyColor": "38;2;255;175;175"
+		},
+		{
+			"type": "host",
+			"key": "Model",
+			"keyColor": "38;2;255;175;175"
+		},
+		{
+			"type": "kernel",
+			"keyColor": "38;2;255;175;175"
+		},
+		{
+			"type": "uptime",
+			"keyColor": "38;2;255;175;175"
+		},
+		{
+			"type": "packages",
+			"keyColor": "38;2;255;175;175"
+		},
+		{
+			"type": "processes",
+			"keyColor": "38;2;255;175;175"
+		},
+		{
+			"type": "shell",
+			"keyColor": "38;2;255;175;175"
+		},
+		{
+			"type": "display",
+			"compactType": "original-with-refresh-rate",
+			"key": "Resolution",
+			"keyColor": "38;2;255;175;175"
+		},
+		{
+			"type": "theme",
+			"keyColor": "38;2;255;175;175"
+		},
+		{
+			"type": "icons",
+			"keyColor": "38;2;255;175;175"
+		},
+		{
+			"type": "terminal",
+			"keyColor": "38;2;255;175;175"
+		},
+		{
+			"type": "terminalfont",
+			"format": "{/name}{-}{/}{name}{?size} {size}{?}",
+			"keyColor": "38;2;255;175;175"
+		},
+		{
+			"type": "cpu",
+			"keyColor": "38;2;255;175;175"
+		},
+		{
+			"type": "gpu",
+			"keyColor": "38;2;255;175;175"
+		},
+		{
+			"type": "cpuusage",
+			"keyColor": "38;2;255;175;175"
+		},
+		{
+			"type": "memory",
+			"keyColor": "38;2;255;175;175"
+		},
+		{
+			"type": "battery",
+			"keyColor": "38;2;255;175;175"
+		},
+		{
+			"type": "localip",
+			"keyColor": "38;2;255;175;175"
+		},
+		"break",
+		{
+			"type": "colors",
+			"block": { "range": [8, 15], "width": 2, "height": 1 }
+		}
+	]
+}
