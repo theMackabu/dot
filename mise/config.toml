@@ -1,0 +1,24 @@
+[tools]
+ruby = "latest"
+java = "latest"
+zig = "latest"
+maven = "latest"
+node = "latest"
+go = "latest"
+gleam = "latest"
+"npm:@themackabu/yarn2" = "latest"
+"npm:create-dmg" = "latest"
+"npm:pierre" = "latest"
+python = "latest"
+kotlin = "latest"
+"npm:prettier" = "latest"
+"npm:typescript" = "latest"
+"npm:typescript-language-server" = "latest"
+"npm:eslint" = "latest"
+"npm:opencommit" = "latest"
+"npm:@biomejs/biome" = "2.0.0"
+"npm:opencode-ai" = "latest"
+
+[settings]
+experimental = true
+idiomatic_version_file_enable_tools = ["node"]
