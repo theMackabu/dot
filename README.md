@@ -4,11 +4,11 @@ Personal configuration files and settings for various development tools and appl
 
 ## Contents
 
+- [**nix/**](nix/): nix
 - [**nvim/**](nvim/): neovim configuration
 - [**ghostty/**](ghostty/): ghostty terminal emulator config and shaders
 - [**tmux/**](tmux/): tmux configuration and scripts
 - [**fastfetch/**](fastfetch/): system information tool configs
-- [**mise/**](mise/): development environment manager config
 - [**pmc/**](pmc/): process manager configuration
 - [**htop/**](htop/): system monitor configuration
 - [**meow/**](meow/): micro¹ like text editor configuration
