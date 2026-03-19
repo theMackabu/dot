@@ -1,4 +1,5 @@
-{ pkgs, self, inputs, username, hostname, ... }: {
+{ pkgs, lib, self, inputs, username, hostname, ... }: {
+  nix.channel.enable = false;
   nixpkgs.config.allowUnfree = true;
   
   system.stateVersion = 6;
@@ -8,12 +9,21 @@
   users.users.${username}.name = username;
   security.pam.services.sudo_local.touchIdAuth = true;
   
+  environment.pathsToLink = lib.mkForce [
+    "/bin"
+    "/share/zsh"
+    "/share/man"
+    "/share/terminfo"
+    "/share/locale"
+  ];
+
   programs.zsh.interactiveShellInit = ''
     fpath=(/usr/local/share/zsh/site-functions $fpath)
   '';
   
   environment.shellAliases = {
     rebuild = "nix develop /etc/nix-darwin --command apply";
+    nix-list = "nix-store -q --references /run/current-system/sw | sed 's|/nix/store/[a-z0-9]*-||' | sort -u";
     nix-size = "nix path-info --json --json-format 1 --all | jq -r 'map(.narSize) | add | @text' | numfmt --to=iec --suffix=B";
   };
   

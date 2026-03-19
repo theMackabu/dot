@@ -16,6 +16,7 @@
     git-lfs
     git-filter-repo
     gh
+    gnupg
     lazygit
     gitui
     curl
@@ -42,12 +43,15 @@
     pkgsCross.aarch64-embedded.buildPackages.binutils       # aarch64-elf-binutils
     pkgsCross.x86_64-embedded.buildPackages.gcc             # x86_64-elf-gcc
     pkgsCross.x86_64-embedded.buildPackages.binutils        # x86_64-elf-binutils
-    pkgsCross.x86_64-embedded.buildPackages.gdb             # x86_64-elf-gdb
     pkgsCross.mingwW64.buildPackages.gcc                    # mingw-w64 (Windows)
     pkgsCross.musl64.buildPackages.gcc                      # x86_64-linux-musl (musl-cross)
     pkgsCross.aarch64-multiplatform-musl.buildPackages.gcc  # aarch64-linux-musl
     pkgsCross.aarch64-multiplatform.buildPackages.gcc       # aarch64-unknown-linux-gnu
     pkgsCross.gnu64.buildPackages.gcc                       # x86_64-unknown-linux-gnu
+    
+    (pkgsCross.x86_64-embedded.buildPackages.gdb.overrideAttrs (old: {
+      configureFlags = (old.configureFlags or []) ++ [ "--disable-werror" ];
+    }))
     
     # llvm/clang
     llvmPackages_latest.clang
@@ -184,5 +188,5 @@
     nasm
     gnutar
     time
-  ];  
+  ];
 }
