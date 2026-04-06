@@ -7,7 +7,7 @@ font-style-italic = Regular Italic
 
 # font options
 font-family = "SFMono Nerd Font"
-#font-family = "Berkeley Mono"
+# font-family = "Berkeley Mono"
 # font-family = "Fragment Mono"
 # font-family = "MonaspiceNe NFM"
 
@@ -18,7 +18,8 @@ unfocused-split-opacity = 1
 
 # shaders
 # custom-shader = ./starfield-colors.glsl
-# custom-shader-animation = always
+custom-shader = ./blaze.glsl
+custom-shader-animation = always
 
 # window
 window-padding-x = 10
