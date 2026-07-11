@@ -1,8 +1,16 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }: 
+let llvm = pkgs.llvmPackages_latest;
+  asanHeaders =
+    if llvm ? compiler-rt-libc
+    then "${llvm.compiler-rt-libc.dev}/include"
+    else "${llvm.compiler-rt.dev}/include";
+in {
   environment.systemPackages = with pkgs; [
     # shells & terminal
     bash
     zsh
+    nushell
+    fish
     tmux
     btop
     htop
@@ -21,6 +29,7 @@
     gitui
     curl
     wget
+    coreutils
     
     # editors
     neovim
@@ -30,10 +39,16 @@
     # languages & runtimes
     php
     dart
+    meson
     cmake
+    ruby
     ninja
     automake
+    pkg-config
     gnumake
+    libsodium
+    openssl
+    openssl.dev
     bison
     re2c
     ccache
@@ -56,7 +71,6 @@
     # llvm/clang
     llvmPackages_latest.clang
     llvmPackages_latest.llvm
-    llvmPackages_latest.lldb
     llvmPackages_latest.lld
     
     # python packages (pulled from python3Packages)
@@ -167,9 +181,12 @@
     
     # nix tools
     nix-tree
+    nix-direnv
     
     # libraries
+    zlib
     libffi
+    libiconv
     libyaml
     gdbm
     glfw
@@ -189,4 +206,22 @@
     gnutar
     time
   ];
+  
+  environment.variables.PKG_CONFIG_PATH = pkgs.lib.makeSearchPath "lib/pkgconfig" [
+    pkgs.openssl.dev
+    pkgs.libffi.dev
+    pkgs.libyaml.dev
+    pkgs.gdbm.dev
+    pkgs.libiconv.dev
+    pkgs.imagemagick.dev
+    pkgs.ffmpeg.dev
+    pkgs.libsodium.dev
+    pkgs.zlib.dev
+  ];
+  
+  environment.variables.LIBRARY_PATH = lib.makeLibraryPath [
+    pkgs.libiconv
+  ];
+  
+  environment.variables.NIX_CFLAGS_COMPILE_arm64_apple_darwin = "-isystem ${asanHeaders}";
 }

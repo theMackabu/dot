@@ -8,13 +8,17 @@
     
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/3";
     determinate.inputs.nixpkgs.follows = "nixpkgs";
+
+    nix-index-database.url = "github:nix-community/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs@{ 
     self,
     nix-darwin,
     nixpkgs,
-    determinate
+    determinate,
+    nix-index-database
   }:
   
   let
@@ -29,6 +33,8 @@
       specialArgs = { inherit inputs self username hostname; };
       modules = [
         determinate.darwinModules.default
+        nix-index-database.darwinModules.nix-index
+        { programs.nix-index-database.comma.enable = true; }
         ./configuration.nix
         ./packages.nix
         ./homebrew.nix

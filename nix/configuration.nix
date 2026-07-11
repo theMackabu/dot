@@ -9,6 +9,8 @@
   users.users.${username}.name = username;
   security.pam.services.sudo_local.touchIdAuth = true;
   
+  environment.variables.MACOSX_DEPLOYMENT_TARGET = "15.0";
+  
   environment.pathsToLink = lib.mkForce [
     "/bin"
     "/share/zsh"
@@ -61,6 +63,8 @@
     customSettings = {
       eval-cores = 0;
       extra-experimental-features = [ "build-time-fetch-tree" ];
+      extra-trusted-substituters = [ "https://ant.cachix.org" ];
+      extra-trusted-public-keys = ["ant.cachix.org-1:v/FbrMBfZ/rZHKZtAqM5mpLu6YKLaDF64dcLP30VTH0="];
     };
   };
 }
